@@ -1,0 +1,40 @@
+{
+  "name": "Asset Value by Sector and Region",
+  "data": {
+    "dimensions": [
+      {
+        "type": "data",
+        "name": "Building",
+        "fields": [
+          "Asset Reference",
+          "Sector",
+          "Benchmark Region",
+          "Gross Leasable Area"
+        ]
+      }
+    ],
+    "facts": [
+      {
+        "name": "AssetValue",
+        "friendlyName": "Asset Value",
+        "parameters": [
+          {"name":"assetReference", "type":"link", "field":"Asset Reference"},
+          {"name": "currency", "type":"set", "value":"USD"},
+          {"name":"date", "type":"set", "value":"2016-12-31"}
+        ]
+      }
+    ],
+    "groups": [
+      {
+        "name":"Sector",
+        "groupByField":"Sector",
+        "aggregateFields": ["Asset Value", "Gross Leasable Area"]
+      },
+      {
+        "name":"Region",
+        "groupByField":"Benchmark Region",
+        "aggregateFields": ["Asset Value"]
+      }
+    ]
+  }
+}

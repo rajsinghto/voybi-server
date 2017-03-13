@@ -1,0 +1,49 @@
+{
+  "name": "Asset Value and Rent by Sector",
+  "data": {
+    "dimensions": [
+      {
+        "type": "data",
+        "name": "Building",
+        "fields": [
+          "Asset Reference",
+          "Sector",
+          "Benchmark Region"
+        ]
+      }
+    ],
+    "facts": [
+      {
+        "name": "AssetValue",
+        "friendlyName": "Asset Value",
+        "parameters": [
+          {"name":"assetReference", "type":"link", "field":"Asset Reference"},
+          {"name": "currency", "type":"set", "value":"USD"},
+          {"name":"date", "type":"set", "value":"2016-12-31"}
+        ]
+      },
+      {
+        "name": "AssetRent",
+        "friendlyName": "Asset Rent",
+        "parameters": [
+          {"name":"assetReference", "type":"link", "field":"Asset Reference"},
+          {"name":"typeOfRent", "type":"set", "value":"Gross"},
+          {"name": "currency", "type":"set", "value":"USD"},
+          {"name":"date", "type":"set", "value":"2016-12-31"}
+        ]
+      }
+    ],
+    "groups": [
+      {
+        "name":"Value By Sector",
+        "groupByField":"Sector",
+        "aggregateFields": ["Asset Value"]
+      },
+      {
+        "name":"Rent by Sector",
+        "groupByField":"Sector",
+        "aggregateFields": ["Asset Rent"]
+      }
+    ]
+  }
+}

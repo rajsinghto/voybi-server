@@ -1,0 +1,12 @@
+{
+  "credentials": {
+    "email": "raj.singh@voyanta.com",
+    "password": "H0chim1nh!",
+    "orgName": "Demo Co."
+  },
+
+  "voyantaUrl": "live.voyanta.com",
+  "voyantaAPIBasePath": "/public/v2/",
+
+  "dbURL": "mongodb://localhost:27017/voyanta"
+}

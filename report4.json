@@ -1,0 +1,39 @@
+{
+  "name": "Asset Value and Rent by Sector",
+  "data": {
+    "dimensions": [
+      {
+        "type": "data",
+        "name": "Building",
+        "fields": [
+          "Asset Reference",
+          "Building Name",
+          "Sector",
+          "Benchmark Region",
+          "Gross Leasable Area"
+        ]
+      }
+    ],
+    "facts": [
+      {
+        "name": "AssetValue",
+        "friendlyName": "Asset Value",
+        "parameters": [
+          {"name":"assetReference", "type":"link", "field":"Asset Reference"},
+          {"name": "currency", "type":"set", "value":"USD"},
+          {"name":"date", "type":"set", "value":"2016-12-31"}
+        ]
+      },
+      {
+        "name": "AssetRent",
+        "friendlyName": "Asset Rent",
+        "parameters": [
+          {"name":"assetReference", "type":"link", "field":"Asset Reference"},
+          {"name":"typeOfRent", "type":"set", "value":"Gross"},
+          {"name": "currency", "type":"set", "value":"USD"},
+          {"name":"date", "type":"set", "value":"2016-12-31"}
+        ]
+      }
+    ]
+  }
+}

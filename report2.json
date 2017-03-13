@@ -1,0 +1,59 @@
+{
+  "name": "Asset Value by Month for Office Assets",
+  "data": {
+    "dimensions": [
+      {
+        "type": "data",
+        "name": "Building",
+        "fields": [
+          "Asset Reference",
+          "Sector",
+          "Benchmark Region"
+        ],
+        "filters":[
+          {
+            "field": "Sector",
+            "operator": "is equal to",
+            "value": "Office"
+          }
+        ]
+      },
+      {
+        "type": "dates",
+        "name": "Period",
+        "start": "2016-01-31",
+        "end": "2016-04-01",
+        "intervalUnit": "months",
+        "interval": 1
+      }
+    ],
+    "facts": [
+      {
+        "name": "AssetValue",
+        "friendlyName": "Asset Value",
+        "parameters": [
+          {"name":"assetReference", "type":"link", "field":"Asset Reference"},
+          {"name": "currency", "type":"set", "value":"USD"},
+          {"name":"date", "type":"link", "field":"Period"}
+        ]
+      }
+    ],
+    "groups": [
+      {
+        "name":"Sector",
+        "groupByField":"Sector",
+        "aggregateFields": ["Asset Value"]
+      },
+      {
+        "name":"Region",
+        "groupByField":"Benchmark Region",
+        "aggregateFields": ["Asset Value"]
+      },
+      {
+        "name":"Periods",
+        "groupByField":"Period",
+        "aggregateFields": ["Asset Value"]
+      }
+    ]
+  }
+}
